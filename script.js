@@ -62,4 +62,36 @@ tableFn()
 
 // DOM INPUTS
 
+
 let nameInput = document.querySelector('input:nth-of-type(1)')
+let quantityInput = document.querySelector('input:nth-of-type(2)')
+let valueInput = document.querySelector('input:nth-of-type(3)')
+let addBtn = document.querySelector('button')
+
+
+const createCoin = function(){
+    
+    let lastCoin = coins[coins.length - 1]
+
+    let newCoin = {
+        id: lastCoin.id + 1,
+        name: nameInput.value,
+        quantity: quantityInput.value,
+        value: valueInput.value
+    }
+
+    coins.push(newCoin)
+
+    let row = createRow(newCoin)
+    table.append(row)   // ??
+
+    nameInput.value = ""
+    quantityInput.value = ""
+    valueInput.value = ""
+}
+
+
+//EVENTS 
+
+addBtn.onclick = createCoin
+
