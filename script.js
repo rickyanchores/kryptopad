@@ -1,3 +1,7 @@
+
+//Create Table Function
+let table = document.querySelector('#table1');
+
 // CREATE COINS ARRAY OBJECTS
 let coins = [
     {
@@ -13,12 +17,13 @@ let coins = [
         value: "1.5K $"
     },
     {
-        id: 3,
+        id: 2,
         name: "Cardano",
         quantity: "1",
         value: "1.5 $"
     }
 ]
+
 
 //CREATE ARROW FUNCTION 
 const createRow = function(newCoin){
@@ -27,10 +32,7 @@ const createRow = function(newCoin){
     let nameCell = document.createElement('td')
     let quantityCell = document.createElement('td')
     let valueCell = document.createElement('td')
-    //REMOVE BTN
-    let removeBtn = document.createElement('button')
-    removeBtn.classList.add('remove-btn')
-    removeBtn.innerText = "Remove"
+    
 
     idCell.innerText = newCoin.id
     nameCell.innerText = newCoin.name
@@ -41,13 +43,10 @@ const createRow = function(newCoin){
     row.appendChild(nameCell)
     row.appendChild(quantityCell)
     row.appendChild(valueCell)
-    row.appendChild(removeBtn)
 
     return row
 }
 
-//Create Table Function
-let table = document.querySelector('#table1');
 
 const tableFn = function(){
     for ( let i of coins){
@@ -66,7 +65,7 @@ tableFn()
 let nameInput = document.querySelector('input:nth-of-type(1)')
 let quantityInput = document.querySelector('input:nth-of-type(2)')
 let valueInput = document.querySelector('input:nth-of-type(3)')
-let addBtn = document.querySelector('button')
+let addBtn = document.getElementById('add-btn')
 
 
 const createCoin = function(){
@@ -83,7 +82,7 @@ const createCoin = function(){
     coins.push(newCoin)
 
     let row = createRow(newCoin)
-    table.append(row)   // ??
+    table.append(row)   
 
     nameInput.value = ""
     quantityInput.value = ""
@@ -91,7 +90,10 @@ const createCoin = function(){
 }
 
 
+
+
+
 //EVENTS 
 
-addBtn.onclick = createCoin
+addBtn.onclick = () =>createCoin()
 
